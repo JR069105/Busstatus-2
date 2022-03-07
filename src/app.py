@@ -1,5 +1,19 @@
 from flask import jsonify, Flask, render_template, url_for, abort
 from src.scrape import scrape_data
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
+import os
+
+if 'SENTRY_URL' in os.environ:
+    sentry_sdk.init(
+        dsn=os.environ['SENTRY_URL'],
+        integrations=[FlaskIntegration()],
+    
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=0.0
+    )
 
 app = Flask(__name__, static_folder='../static', static_url_path='/static',
 template_folder='../templates')

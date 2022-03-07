@@ -9,6 +9,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+    
+env:
+  SENTRY_URL: ${{secrets.SENTRY_URL}}
 
 jobs:
   build:
