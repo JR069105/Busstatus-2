@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}SBS Home{% endblock %}
+{% block bus_status_name %}Springdale{% endblock %}
+{% block content %}
+    {% for title, fields in schools.items() %}
+        <div>
+            <p class="bigtext">{{title|title}}</p>
+            <ul>
+            {% for field, value in fields.items() %}
+                  <li><a href="{{value}}" class="smalltext">{{field}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

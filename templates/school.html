@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='school.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block title %}SBS - {{school}}{% endblock %}
+{% block bus_status_name %}{{school}}{% endblock %}
+{% block content %}
+    {% for category, title in school_headers.items() %}
+        <div>
+            <p class="mediumtext">{{title}}</p>
+            {% for field in data[category] %}
+                  <li>{{field}}</li>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+.scho > div {
+    margin: 20px 0px;
+}
+
+.mediumtext {
+  color: white;
+  font-size: 30px;
+  font-family: Helvetica;
+  font-weight: 400;
+  height: max-content;
+  margin: 10px 0;
+  width: 320px;
+}
+
+.scho li {
+    font-size: 18px;
+}
