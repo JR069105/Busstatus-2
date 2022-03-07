@@ -55,7 +55,7 @@ def group_schools(schools):
     grouped_schools =  {key: {school.replace(code, "").strip(): school.lower().replace(' ', '_') for school in schools if code in school} for key, code in codes.items()}
     
     for school in HIGH_SCHOOL_OVERRIDE:
-        grouped_schools["high"][school.strip()] = sorted(school.lower().replace(' ', '_'))
+        grouped_schools["high"][school.strip()] = school.lower().replace(' ', '_')
     
     return grouped_schools
     
