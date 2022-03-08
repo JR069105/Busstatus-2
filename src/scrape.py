@@ -89,7 +89,11 @@ def process_datum(datum):
                 processed["morning"].append(value)
             if flags["afternoon"] or not flags["morning"]:
                 processed["afternoon"].append(value)
-    
+            #Could be bad...
+            else:
+               processed["afternoon"].append("none")   
+            #End of bad
+            
     return processed
     
 def process_data(data):
