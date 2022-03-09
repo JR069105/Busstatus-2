@@ -59,13 +59,14 @@ def group_schools(schools):
     
     return grouped_schools
 
-#variables to set which buses have been added to the list
-mornyet = False
-afteryet = False
-changeyet = False
-#End
-
 def process_datum(datum):
+    
+    #variables to set which buses have been added to the list
+    mornyet = False
+    afteryet = False
+    changeyet = False
+    #End
+    
     processed = {'morning': [], 'afternoon': [], 'changes': []}
     for value in datum:
         value = value.lower().replace('\\', '/')
@@ -102,7 +103,11 @@ def process_datum(datum):
     #could be bad
     if afteryet == False:
         processed["afternoon"].append("none") 
-    #End of bad            
+    if mornyet == False:
+        processed["morning"].append("none")  
+    if changeyet == False:
+        processed["changes"].append("none")    
+        #End of bad            
     return processed
 
 def process_data(data):
