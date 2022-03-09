@@ -100,14 +100,13 @@ def process_datum(datum):
                 processed["afternoon"].append(value)
                 afteryet = True
                 
-    #could be bad
     if afteryet == False:
         processed["afternoon"].append("none") 
     if mornyet == False:
         processed["morning"].append("none")  
     if changeyet == False:
-        processed["changes"].append("none")    
-        #End of bad            
+        processed["changes"].append("none")   
+        
     return processed
 
 def process_data(data):
