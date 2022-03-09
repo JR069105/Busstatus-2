@@ -25,7 +25,7 @@ body {
 }
 .SPStree:hover{
   transform: scale(0.875); 
-  opacity:.875
+  opacity:.75
 }
 .redbar{
   width:100%+10px;
