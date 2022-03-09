@@ -58,7 +58,13 @@ def group_schools(schools):
         grouped_schools["high"][school.strip()] = school.lower().replace(' ', '_')
     
     return grouped_schools
-    
+
+#variables to set which buses have been added to the list
+mornyet = False
+afteryet = False
+changeyet = False
+#End
+
 def process_datum(datum):
     processed = {'morning': [], 'afternoon': [], 'changes': []}
     for value in datum:
@@ -84,19 +90,25 @@ def process_datum(datum):
             elif flags["afternoon"]:
                 text += " in the afternoon"
             processed["changes"].append(text)
+            changeyet = True
         else:
             if flags["morning"] or not flags["afternoon"]:
                 processed["morning"].append(value)
+                mornyet = True
             if flags["afternoon"] or not flags["morning"]:
                 processed["afternoon"].append(value)
-          
-            #could be bad
-            if not flags["afternoon"] and not flags["morning"]:
-               processed["afternoon"].append("none")   
-            #End of bad
-            
+                afteryet = True
+                
+    #could be bad
+    if changeyet == False:
+        processed["changes"].append("none")
+    if mornyet == False:
+        processed["morning"].append("none")
+    if afteryet == False:
+        processed["afternoon"].append("none") 
+    #End of bad            
     return processed
-    
+
 def process_data(data):
     return {key.lower().replace(' ', '_'): process_datum(value) for key, value in data.items()}
     
