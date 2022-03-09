@@ -20,6 +20,12 @@ body {
   height:14% width;
   float:left;
   margin-top:-3%;
+  transition: transform .2s;
+
+}
+.SPStree:hover{
+  transform: scale(0.875); 
+  opacity:.875
 }
 .redbar{
   width:100%+10px;
