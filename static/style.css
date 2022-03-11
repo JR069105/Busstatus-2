@@ -81,3 +81,11 @@ li{
   height:40% height;
   margin-bottom:-35%;
 }
+.depotphone{
+  color:white;
+  font-weight: 300;
+  font-size: 25px;
+  font-family:Helvetica;
+  float: left;
+  margin-top:50px;
+}
