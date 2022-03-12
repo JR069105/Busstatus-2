@@ -75,13 +75,8 @@ ul {
 li{
   color:white;
 }
-.bus{
-  margin-left:50%;
-  width:40%;
-  height:40% height;
-  margin-bottom:-35%;
-}
-.depotphone{
+
+.footer{
   color:rgb(220,220,220);  
   font-weight: 300;
   font-size: 25px;
@@ -94,4 +89,4 @@ li{
   background-color: rgb(150,150,150);
   text-align: center;
   padding: 1% 2%;
-} 
+}
