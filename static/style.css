@@ -82,10 +82,16 @@ li{
   margin-bottom:-35%;
 }
 .depotphone{
-  color:white;
+  color:rgb(220,220,220);  
   font-weight: 300;
   font-size: 25px;
   font-family:Helvetica;
   float: left;
-  margin-top:50px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  border-top-left-radius:3vw;
+  background-color: rgb(150,150,150);
+  text-align: center;
+  padding: 1% 2%;
 } 
