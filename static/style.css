@@ -63,6 +63,7 @@ ul {
 .smalltext{
   color:black;
   background-color:rgb(255,215,0);
+  border-radius:10px;
   text-decoration: none;
   font-weight: 700;
   font-size: 25px;
@@ -74,6 +75,7 @@ ul {
 }
 li{
   color:white;
+  margin: 5px 0;
 }
 
 .footer{
