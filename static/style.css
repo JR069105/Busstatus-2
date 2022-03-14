@@ -40,7 +40,8 @@ body{
   border-color:#170f64;
   border-style:solid;
   border-width:10px;
-  border-top-left-radius: 3vw;;
+  border-top-left-radius: 3vw;
+  margin-bottom: 10vh;
 
 }
 .scho {
