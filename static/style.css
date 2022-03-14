@@ -68,6 +68,7 @@ ul {
   font-weight: 700;
   font-size: 25px;
   font-family:Helvetica;
+  padding: 0 5px;
 }
 .smalltext:hover{
   color:rgb(255,215,0);
