@@ -12,7 +12,9 @@ body {
   background-color:white;
   padding: 6% 0;
   margin-top:-10px;
-  border-top-left-radius: 3vw;;
+  border-top-left-radius: 3vw;
+  display: flex;
+  flex-flow: row nowrap;
 }
 .title{
   color: black;
@@ -22,9 +24,8 @@ body {
 }
 .SPStree{
   margin-left:10px;
-  width: 10%;
+  width: 130px;
   height:14% width;
-  float:left;
   margin-top:-3%;
   transition: transform .2s;
 

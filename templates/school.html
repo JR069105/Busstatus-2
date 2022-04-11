@@ -6,12 +6,10 @@
 {% block title %}SBS - {{school}}{% endblock %}
 {% block bus_status_name %}{{school}}{% endblock %}
 {% block content %}
-    {% for category, title in school_headers.items() %}
-        <div>
-            <p class="mediumtext">{{title}}</p>
-            {% for field in data[category] %}
-                  <li>{{field}}</li>
-            {% endfor %}
-        </div>
-    {% endfor %}
+    <div>
+        <p class="mediumtext">Today's Updates</p>
+        {% for field in data %}
+              <li>{{field}}</li>
+        {% endfor %}
+    </div>
 {% endblock %}

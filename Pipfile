@@ -7,6 +7,8 @@ name = "pypi"
 flask = "*"
 requests = "*"
 sentry-sdk = {extras = ["flask"], version = "*"}
+pytz = "*"
+apscheduler = "*"
 
 [dev-packages]
 

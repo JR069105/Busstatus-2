@@ -16,8 +16,13 @@
   <body class = "body">
     
     <div class = "topbar">
+      <div>
       <a href="{{ url_for('home_page') }}"><image src="{{ url_for('static', filename='SPStree.png') }}" class="SPStree"></image></a>
-      <a class="title">{% block bus_status_name %}{% endblock %} Bus Status</a>
+      </div>
+      <div>
+        <a class="title">{% block bus_status_name %}{% endblock %} Bus Status</a>
+        <p>Last Updated: {{last_updated}}</p>
+      </div>
     </div>
     
     <hr class="redbar">  

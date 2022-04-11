@@ -2,6 +2,7 @@ import requests
 import csv
 import tempfile
 from datetime import datetime
+from pytz import timezone
 
 CSV_URL = 'https://docs.google.com/spreadsheets/d/1p9LjBNkZvti6k_9rV5rc7Bs9oFfLLLCPgvTCIJxvMy4/export?format=csv'
 
@@ -52,7 +53,7 @@ def group_schools(schools):
         "high": "High"
     }
     
-    grouped_schools =  {key: {school.replace(code, "").strip(): school.lower().replace(' ', '_') for school in schools if code in school} for key, code in codes.items()}
+    grouped_schools =  {key: {school.strip(): school.lower().replace(' ', '_') for school in schools if code in school} for key, code in codes.items()}
     
     for school in HIGH_SCHOOL_OVERRIDE:
         grouped_schools["high"][school.strip()] = school.lower().replace(' ', '_')
@@ -60,19 +61,10 @@ def group_schools(schools):
     return grouped_schools
 
 def process_datum(datum):
-    
-    #variables to set which buses have been added to the list
-    mornyet = False
-    afteryet = False
-    changeyet = False
-    #End
-    
-    processed = {'morning': [], 'afternoon': [], 'changes': []}
+    processed = []
     for value in datum:
         value = value.lower().replace('\\', '/')
-        flags = {'morning': False, "afternoon": False, "replacement": False}
-        if '/' in value:
-            flags["replacement"] = True
+        flags = {'morning': False, "afternoon": False}
         if value.endswith('pm'):
             flags["afternoon"] = True
         elif value.endswith('am'):
@@ -82,31 +74,13 @@ def process_datum(datum):
         if len(value) == 0:
             continue
 
-        if flags["replacement"]:
-            # split the two buses by the slash
-            splits = value.split('/')
-            text = f'#{splits[0]} replaces #{splits[1]}'
-            if flags["morning"]:
-                text += " in the morning"
-            elif flags["afternoon"]:
-                text += " in the afternoon"
-            processed["changes"].append(text)
-            changeyet = True
+        if flags["morning"]:
+            process.append(f'Bus {value} canceled in the morning')
+        elif flags["afternoon"]:
+            processed.append(f'Bus {value} canceled in the afternoon')
         else:
-            if flags["morning"] or not flags["afternoon"]:
-                processed["morning"].append(value)
-                mornyet = True
-            if flags["afternoon"] or not flags["morning"]:
-                processed["afternoon"].append(value)
-                afteryet = True
-                
-    if afteryet == False:
-        processed["afternoon"].append("none") 
-    if mornyet == False:
-        processed["morning"].append("none")  
-    if changeyet == False:
-        processed["changes"].append("none")   
-        
+            processed.append(f'Bus {value} canceled all day')
+
     return processed
 
 def process_data(data):
@@ -129,5 +103,6 @@ def scrape_data():
     return {
         "schools": schools,
         "data": results,
-        "reverse_schools": reverse_schools(schools)
+        "reverse_schools": reverse_schools(schools),
+        "last_updated": datetime.now(tz=timezone('America/Chicago'))
     }
