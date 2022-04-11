@@ -24,8 +24,8 @@ body {
 }
 .SPStree{
   margin-left:10px;
-  width: 130px;
-  height:14% width;
+  width: 10vw;
+  height: 15vw;
   margin-top:-3%;
   transition: transform .2s;
 
