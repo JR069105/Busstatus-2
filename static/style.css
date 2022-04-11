@@ -23,12 +23,11 @@ body {
   margin-left:10px;
 }
 .SPStree{
-  margin-left:10px;
+  margin-left:2vw;
   width: 10vw;
   height: 15vw;
   margin-top:-3%;
   transition: transform .2s;
-
 }
 .SPStree:hover{
   transform: scale(0.875); 
