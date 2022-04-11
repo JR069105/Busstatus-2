@@ -34,6 +34,10 @@ body {
   transform: scale(0.875); 
   opacity:.75
 }
+.lastupdate{
+font-size:2vw;
+margin-left:10px;
+}
 .redbar{
   width:100%+10px;
   height:1.5vw;
