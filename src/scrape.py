@@ -62,6 +62,7 @@ def group_schools(schools):
 
 def process_datum(datum):
     processed = []
+    nobuses = True
     for value in datum:
         value = value.lower().replace('\\', '/')
         flags = {'morning': False, "afternoon": False}
@@ -75,12 +76,16 @@ def process_datum(datum):
             continue
 
         if flags["morning"]:
+            nobuses = False
             process.append(f'Bus {value} canceled in the morning')
         elif flags["afternoon"]:
             processed.append(f'Bus {value} canceled in the afternoon')
+            nobuses = False
         else:
             processed.append(f'Bus {value} canceled all day')
-
+            nobuses = False
+    if nobuses == True:
+        processed.append('All buses running')
     return processed
 
 def process_data(data):
