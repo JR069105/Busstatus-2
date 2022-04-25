@@ -65,8 +65,7 @@ ul {
   margin: 20px 0;
 }
 .smalltext{
-  color:black;
-  background-color:rgb(255,215,0);
+  color:rgb(235,235,235);
   border-radius:10px;
   text-decoration: none;
   font-weight: 700;
@@ -75,8 +74,7 @@ ul {
   padding: 0 5px;
 }
 .smalltext:hover{
-  color:rgb(255,215,0);
-  background-color:black;
+  color:rgb(185,185,185);
 }
 li{
   color:white;
