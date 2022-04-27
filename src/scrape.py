@@ -77,7 +77,7 @@ def process_datum(datum):
 
         if flags["morning"]:
             nobuses = False
-            process.append(f'Bus {value} canceled in the morning')
+            processed.append(f'Bus {value} canceled in the morning')
         elif flags["afternoon"]:
             processed.append(f'Bus {value} canceled in the afternoon')
             nobuses = False
