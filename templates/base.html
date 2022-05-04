@@ -7,7 +7,9 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel='Icon' href="{{ url_for('static', filename='SPStree.png') }}" type='image/x-icon'/>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
-
+    {% if iframe == 'true' %}
+        <link href="{{ url_for('static', filename='iframe.css') }}" rel="stylesheet" type="text/css" />
+    {% endif %}
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 
     {% endblock %}
@@ -16,9 +18,12 @@
   <body class = "body">
     
     <div class = "topbar">
-      <div>
-      <a href="{{ url_for('home_page') }}"><image src="{{ url_for('static', filename='SPStree.png') }}" class="SPStree"></image></a>
-      </div>
+      
+      {% if iframe != 'true' %}
+          <div>
+          <a href="{{ url_for('home_page') }}"><image src="{{ url_for('static', filename='SPStree.png') }}" class="SPStree"></image></a>
+          </div>
+      {% endif %}
       <div>
         <a class="title">{% block bus_status_name %}{% endblock %} Bus Status</a>
         <p class="lastupdate">Last Updated: {{last_updated}}</p>

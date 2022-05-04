@@ -5,7 +5,7 @@
 {% endblock %}
 {% block title %}SBS - {{school}}{% endblock %}
 {% block bus_status_name %}{{school}}{% endblock %}
-{% block extraheader %}<a href="{{ url_for('home_page') }}"}>
+{% block extraheader %}<a href="{{ url_for('home_page', iframe=iframe) }}"}>
         <p class="lastupdate">Return to Home</p>
 </a>
 {% endblock %}

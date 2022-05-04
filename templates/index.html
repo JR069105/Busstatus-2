@@ -7,7 +7,7 @@
             <p class="bigtext">{{title|title}}</p>
             <ul>
             {% for field, value in fields.items() %}
-                  <li><a href="{{value}}" class="smalltext">{{field}}</a></li>
+                  <li><a href="{{value if iframe != 'true' else value + '?iframe=true'}}" class="smalltext">{{field}}</a></li>
             {% endfor %}
             </ul>
         </div>

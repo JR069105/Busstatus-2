@@ -1,0 +1,10 @@
+.topbar {
+    border-top-left-radius: 0px !important;
+}
+body {
+    border: 0 !important;
+}
+
+.topbar > div {
+    margin-left: 15px !important;
+}

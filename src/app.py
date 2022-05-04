@@ -1,4 +1,4 @@
-from flask import jsonify, Flask, render_template, url_for, abort
+from flask import jsonify, Flask, render_template, url_for, abort, request
 from src.scrape import scrape_data
 import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
@@ -39,7 +39,7 @@ def setup_scrapes():
 
 @app.route("/")
 def home_page():
-    return render_template('index.html', schools=bus_data["schools"], last_updated=formatTimestamp(bus_data["last_updated"]))
+    return render_template('index.html', schools=bus_data["schools"], last_updated=formatTimestamp(bus_data["last_updated"]), iframe=request.args.get("iframe"))
     
 @app.route("/json")
 def raw():
@@ -58,7 +58,7 @@ def scrape():
 def school_page(schoolname):
     if schoolname not in bus_data["data"]:
         abort(404)
-    return render_template('school.html', data=bus_data["data"][schoolname], last_updated=formatTimestamp(bus_data["last_updated"]), school=bus_data["reverse_schools"][schoolname])
+    return render_template('school.html', data=bus_data["data"][schoolname], last_updated=formatTimestamp(bus_data["last_updated"]), school=bus_data["reverse_schools"][schoolname], iframe=request.args.get("iframe"))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5050)

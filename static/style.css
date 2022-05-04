@@ -41,6 +41,10 @@ body {
 .lastupdate{
 font-size: 1.5rem;
 margin-left:10px;
+
+}
+a {
+  text-decoration: none;
 }
 .redbar{
   width:100%+10px;
