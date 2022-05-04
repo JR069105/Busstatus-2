@@ -29,6 +29,8 @@ def find_index_for_date(data, date):
             return None
         return data[0].index(matching[0])
     
+def get_schools(data):
+    return [row[0] for row in data[1:]]
 
 def get_data_for_index(data, index):
     responses = {}
@@ -101,9 +103,20 @@ def reverse_schools(data):
     
 def scrape_data():
     data = fetch_data()
+    
+    schools_raw = get_schools(data)
+    schools = group_schools(schools_raw)
     index = find_index_for_date(data, datetime.now())
+    try:
+        results = get_data_for_index(data, index)
+    except:
+        return {
+            "schools": schools,
+            "data": {i: ['No Data Found'] for i in reverse_schools(schools)},
+            "reverse_schools": reverse_schools(schools),
+            "last_updated": datetime.now(tz=timezone('America/Chicago'))
+        }
     results = get_data_for_index(data, index)
-    schools = group_schools(results.keys())
     results = process_data(results)
     return {
         "schools": schools,
