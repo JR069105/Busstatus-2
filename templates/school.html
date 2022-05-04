@@ -5,6 +5,10 @@
 {% endblock %}
 {% block title %}SBS - {{school}}{% endblock %}
 {% block bus_status_name %}{{school}}{% endblock %}
+{% block extraheader %}<a href="{{ url_for('home_page') }}"}>
+        <p class="lastupdate">Return to Home</p>
+</a>
+{% endblock %}
 {% block content %}
     <div>
         <p class="mediumtext">Today's Updates</p>
